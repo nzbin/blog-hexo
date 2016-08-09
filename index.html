@@ -429,148 +429,12 @@
 
       
         
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。</p>
-<p>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>HTTP协议的主要特点可概括如下：</p>
-<ol>
-<li>支持客户/服务器模式。支持基本认证和安全认证。</li>
-<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</li>
-<li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</li>
-<li>HTTP 0.9和1.0使用非持续连接：限制每次连接只处理一个请求，服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。HTTP 1.1使用持续连接：不必为每个web对象创建一个新的连接，一个连接可以传送多个对象。</li>
-<li>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。</li>
-</ol>
-<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>一次HTTP操作称为一个事务，其工作过程可分为四步：</p>
-<ol>
-<li>首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始。</li>
-<li>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。</li>
-<li>服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</li>
-<li>客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。<br>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，有显示屏输出。对于用户来说，这些过程是由HTTP自己完成的，用户只要用鼠标点击，等待信息显示就可以了。</li>
-</ol>
-<h2 id="头域"><a href="#头域" class="headerlink" title="头域"></a>头域</h2><p>每个头域由一个域名，冒号（:）和域值三部分组成。域名是大小写无关的，域值前可以添加任何数量的空格符，头域可以被扩展为多行，在每行开始处，使用至少一个空格或制表符。</p>
-<h3 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a>请求信息</h3><p>发出的请求信息格式如下：</p>
-<ul>
-<li>请求行 - 例如GET /images/logo.gif HTTP/1.1，表示从/images目录下请求logo.gif这个文件。</li>
-<li>请求头 - 例如Accept-Language: en</li>
-<li>空行</li>
-<li>可选的消息体 - 请求行和标题必须以&lt;CR&gt;&lt;LF&gt;作为结尾（也就是，回车然后换行）。空行内必须只有&lt;CR&gt;&lt;LF&gt;而无其他空格。在HTTP/1.1协议中，所有的请求头，除post外，都是可选的。</li>
-</ul>
-<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><p>HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：</p>
-<ul>
-<li>OPTIONS - 返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送’*’的请求来测试服务器的功能性。</li>
-<li>HEAD- 向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以在不必传输整个响应内容的情况下，就可以获取包含在响应消息头中的元信息。该方法常用于测试超链接的有效性，是否可以访问，以及最近是否更新。</li>
-<li>GET - 向特定的资源发出请求。注意：GET方法不应当被用于产生“副作用”的操作中，例如在web app中。其中一个原因是GET可能会被网络蜘蛛等随意访问。</li>
-<li>POST - 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</li>
-<li>PUT - 向指定资源位置上传其最新内容。</li>
-<li>DELETE - 请求服务器删除Request-URI所标识的资源。</li>
-<li>TRACE- 回显服务器收到的请求，主要用于测试或诊断。</li>
-<li>CONNECT - HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</li>
-<li>PATCH - 用来将局部修改应用于某一资源，添加于规范RFC5789。</li>
-</ul>
-<h3 id="响应信息"><a href="#响应信息" class="headerlink" title="响应信息"></a>响应信息</h3><p>客户端向服务器发送一个请求，服务器以一个状态行作为响应，响应的内容包括：消息协议的版本、成功或者错误编码、服务器信息、实体元信息以及必要的实体内容。根据响应类别的类别，服务器响应里可以含实体内容，但不是所有的响应都有实体内容。</p>
-<h3 id="响应头域"><a href="#响应头域" class="headerlink" title="响应头域"></a>响应头域</h3><p>服务器需要传递许多附加信息，这些信息不能全放在状态行里。因此，需要另行定义响应头域，用来描述这些附加信息。响应头域主要描述服务器的信息和Request-URI的信息。</p>
-<h3 id="http常见的请求头"><a href="#http常见的请求头" class="headerlink" title="http常见的请求头"></a>http常见的请求头</h3><ul>
-<li>If-Modified-Since</li>
-<li>If-None-Match</li>
-<li>Pragma</li>
-<li>Cache-Control</li>
-<li>Accept</li>
-<li>Accept-Encoding</li>
-<li>Accept-Language</li>
-<li>Accept-Charset</li>
-<li>User-Agent</li>
-<li>Content-Type</li>
-<li>Referer</li>
-<li>Connection</li>
-<li>Host</li>
-<li>Cookie</li>
-<li>Content-Length</li>
-<li>Authorization</li>
-<li>UA-Pixels，UA-Color，UA-OS，UA-CPU</li>
-<li>From</li>
-<li>Range</li>
-</ul>
-<h3 id="http常见的响应头"><a href="#http常见的响应头" class="headerlink" title="http常见的响应头"></a>http常见的响应头</h3><ul>
-<li>Allow</li>
-<li>Date</li>
-<li>Expires</li>
-<li>P3P</li>
-<li>Set-Cookie</li>
-<li>ETag</li>
-<li>Last-Modified</li>
-<li>Content-Type</li>
-<li>Content-Range</li>
-<li>Content-Length</li>
-<li>Content-Encoding</li>
-<li>Content-Language</li>
-<li>Server</li>
-<li>X-AspNet-Version</li>
-<li>X-Powered-By</li>
-<li>Connection</li>
-<li>Location</li>
-<li>Refresh</li>
-<li>WWW-Authenticate</li>
-</ul>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><ul>
-<li>1XX 信息提示状态码<ul>
-<li>100     Continue(继续)</li>
-<li>101     Switching Protocols（切换协议）</li>
-</ul>
-</li>
-<li>2XX 成功状态码<ul>
-<li>200     OK</li>
-<li>201     Created（已创建）</li>
-<li>202     Accepted（已接受）</li>
-<li>203     Non-Authoritative Information（非权威信息）</li>
-<li>204     No Content(没有内容)</li>
-<li>205     Reset Content(重置内容)</li>
-<li>206     Partial Content（部分内容）</li>
-</ul>
-</li>
-<li>3XX 重定向状态码<ul>
-<li>300     Multiple Choices（多项选择）</li>
-<li>301     Moved Permanently（永久移除)</li>
-<li>302     Found（已找到）</li>
-<li>303     See Other（参见其他）</li>
-<li>304     Not Modified（未修改）</li>
-<li>305      Use Proxy（使用代理）</li>
-<li>306      未使用</li>
-<li>307     Temporary Redirect（临时重定向）</li>
-</ul>
-</li>
-<li>4XX 客户端错误状态码<ul>
-<li>400     Bad Request（坏请求）</li>
-<li>401     Unauthorized（未授权）</li>
-<li>402     Payment Required（要求付款）</li>
-<li>403     Forbidden（禁止）</li>
-<li>404     Not Found（未找到）</li>
-<li>405     Method Not Allowed（不允许使用的方法）</li>
-<li>406     Not Acceptable（无法接受）</li>
-<li>407     Proxy Authentication Required(要求进行代理认证)</li>
-<li>408     Request Timeout（请求超时）</li>
-<li>409     Conflict（冲突）</li>
-<li>410     Gone（消失了）</li>
-<li>411     Length Required（要求长度指示）</li>
-<li>412     Precondition Failed（先决条件失败）</li>
-<li>413     Request Entity Too Large（请求实体太大）</li>
-<li>414     Request URI Too Long（请求URI太长）</li>
-<li>415     Unsupported Media Type（不支持的媒体类型）</li>
-<li>416     Requested Range Not Satisfiable（所请求的范围未得到满足）</li>
-<li>417     Expectation Failed（无法满足期望）</li>
-</ul>
-</li>
-<li>5XX 服务器错误状态码<ul>
-<li>500     Internal Server Error(内部服务器错误)</li>
-<li>501     Not Implemented（未实现）</li>
-<li>502     Bad Gateway（网关故障）</li>
-<li>503     Service Unavailable（未提供此服务）</li>
-<li>504     Gateway Timeout（网关超时）</li>
-<li>505     HTTP Version Not Supported（不支持的HTTP版本）</li>
-</ul>
-</li>
-</ul>
-
-          
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/07/http简介和状态码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -857,7 +721,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="nzbin" />
           <p class="site-author-name" itemprop="name">nzbin</p>
           <p class="site-description motion-element" itemprop="description"></p>
