@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="概念HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。">
+<meta name="description" content="HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http协议和状态码摘要">
+<meta property="og:title" content="http协议和状态码">
 <meta property="og:url" content="http://yoursite.com/2016/08/07/http简介和状态码/index.html">
 <meta property="og:site_name" content="放荡不羁爱自由">
-<meta property="og:description" content="概念HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。">
-<meta property="og:updated_time" content="2016-08-09T15:23:14.628Z">
+<meta property="og:description" content="HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。">
+<meta property="og:updated_time" content="2016-08-10T13:32:05.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="http协议和状态码摘要">
-<meta name="twitter:description" content="概念HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。">
+<meta name="twitter:title" content="http协议和状态码">
+<meta name="twitter:description" content="HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。">
 
 
 
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/08/07/http简介和状态码/"/>
 
-  <title> http协议和状态码摘要 | 放荡不羁爱自由 </title>
+  <title> http协议和状态码 | 放荡不羁爱自由 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
             
             
               
-                http协议和状态码摘要
+                http协议和状态码
               
             
           </h1>
@@ -315,7 +315,7 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。<br><a id="more"></a><br>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。</p>
+        <p>HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW即World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。<br><a id="more"></a><br>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>HTTP协议的主要特点可概括如下：</p>
 <ol>
 <li>支持客户/服务器模式。支持基本认证和安全认证。</li>
@@ -332,14 +332,14 @@
 <li>客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。<br>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，有显示屏输出。对于用户来说，这些过程是由HTTP自己完成的，用户只要用鼠标点击，等待信息显示就可以了。</li>
 </ol>
 <h2 id="头域"><a href="#头域" class="headerlink" title="头域"></a>头域</h2><p>每个头域由一个域名，冒号（:）和域值三部分组成。域名是大小写无关的，域值前可以添加任何数量的空格符，头域可以被扩展为多行，在每行开始处，使用至少一个空格或制表符。</p>
-<h3 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a>请求信息</h3><p>发出的请求信息格式如下：</p>
+<h3 id="请求信息"><a href="#请求信息" class="headerlink" title="*请求信息"></a>*请求信息</h3><p>发出的请求信息格式如下：</p>
 <ul>
 <li>请求行 - 例如GET /images/logo.gif HTTP/1.1，表示从/images目录下请求logo.gif这个文件。</li>
 <li>请求头 - 例如Accept-Language: en</li>
 <li>空行</li>
 <li>可选的消息体 - 请求行和标题必须以&lt;CR&gt;&lt;LF&gt;作为结尾（也就是，回车然后换行）。空行内必须只有&lt;CR&gt;&lt;LF&gt;而无其他空格。在HTTP/1.1协议中，所有的请求头，除post外，都是可选的。</li>
 </ul>
-<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><p>HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：</p>
+<h3 id="请求方法"><a href="#请求方法" class="headerlink" title="*请求方法"></a>*请求方法</h3><p>HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：</p>
 <ul>
 <li>OPTIONS - 返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送’*’的请求来测试服务器的功能性。</li>
 <li>HEAD- 向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以在不必传输整个响应内容的情况下，就可以获取包含在响应消息头中的元信息。该方法常用于测试超链接的有效性，是否可以访问，以及最近是否更新。</li>
@@ -351,9 +351,9 @@
 <li>CONNECT - HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</li>
 <li>PATCH - 用来将局部修改应用于某一资源，添加于规范RFC5789。</li>
 </ul>
-<h3 id="响应信息"><a href="#响应信息" class="headerlink" title="响应信息"></a>响应信息</h3><p>客户端向服务器发送一个请求，服务器以一个状态行作为响应，响应的内容包括：消息协议的版本、成功或者错误编码、服务器信息、实体元信息以及必要的实体内容。根据响应类别的类别，服务器响应里可以含实体内容，但不是所有的响应都有实体内容。</p>
-<h3 id="响应头域"><a href="#响应头域" class="headerlink" title="响应头域"></a>响应头域</h3><p>服务器需要传递许多附加信息，这些信息不能全放在状态行里。因此，需要另行定义响应头域，用来描述这些附加信息。响应头域主要描述服务器的信息和Request-URI的信息。</p>
-<h3 id="http常见的请求头"><a href="#http常见的请求头" class="headerlink" title="http常见的请求头"></a>http常见的请求头</h3><ul>
+<h3 id="响应信息"><a href="#响应信息" class="headerlink" title="*响应信息"></a>*响应信息</h3><p>客户端向服务器发送一个请求，服务器以一个状态行作为响应，响应的内容包括：消息协议的版本、成功或者错误编码、服务器信息、实体元信息以及必要的实体内容。根据响应类别的类别，服务器响应里可以含实体内容，但不是所有的响应都有实体内容。</p>
+<h3 id="响应头域"><a href="#响应头域" class="headerlink" title="*响应头域"></a>*响应头域</h3><p>服务器需要传递许多附加信息，这些信息不能全放在状态行里。因此，需要另行定义响应头域，用来描述这些附加信息。响应头域主要描述服务器的信息和Request-URI的信息。</p>
+<h3 id="http常见的请求头"><a href="#http常见的请求头" class="headerlink" title="*http常见的请求头"></a>*http常见的请求头</h3><ul>
 <li>If-Modified-Since</li>
 <li>If-None-Match</li>
 <li>Pragma</li>
@@ -374,7 +374,7 @@
 <li>From</li>
 <li>Range</li>
 </ul>
-<h3 id="http常见的响应头"><a href="#http常见的响应头" class="headerlink" title="http常见的响应头"></a>http常见的响应头</h3><ul>
+<h3 id="http常见的响应头"><a href="#http常见的响应头" class="headerlink" title="*http常见的响应头"></a>*http常见的响应头</h3><ul>
 <li>Allow</li>
 <li>Date</li>
 <li>Expires</li>
@@ -494,8 +494,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/09/cookie笔记/" rel="prev" title="cookie笔记">
-                cookie笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/09/cookie学习笔记/" rel="prev" title="cookie学习笔记">
+                cookie学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -564,7 +564,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -572,7 +572,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -581,7 +581,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -621,7 +621,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流程"><span class="nav-number">3.</span> <span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#头域"><span class="nav-number">4.</span> <span class="nav-text">头域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求信息"><span class="nav-number">4.1.</span> <span class="nav-text">请求信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求方法"><span class="nav-number">4.2.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应信息"><span class="nav-number">4.3.</span> <span class="nav-text">响应信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应头域"><span class="nav-number">4.4.</span> <span class="nav-text">响应头域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http常见的请求头"><span class="nav-number">4.5.</span> <span class="nav-text">http常见的请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http常见的响应头"><span class="nav-number">4.6.</span> <span class="nav-text">http常见的响应头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码"><span class="nav-number">5.</span> <span class="nav-text">状态码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流程"><span class="nav-number">2.</span> <span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#头域"><span class="nav-number">3.</span> <span class="nav-text">头域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求信息"><span class="nav-number">3.1.</span> <span class="nav-text">*请求信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求方法"><span class="nav-number">3.2.</span> <span class="nav-text">*请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应信息"><span class="nav-number">3.3.</span> <span class="nav-text">*响应信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应头域"><span class="nav-number">3.4.</span> <span class="nav-text">*响应头域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http常见的请求头"><span class="nav-number">3.5.</span> <span class="nav-text">*http常见的请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http常见的响应头"><span class="nav-number">3.6.</span> <span class="nav-text">*http常见的响应头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码"><span class="nav-number">4.</span> <span class="nav-text">状态码</span></a></li></ol></div>
             
           </div>
         </section>

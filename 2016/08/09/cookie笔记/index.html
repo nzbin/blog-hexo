@@ -84,13 +84,16 @@
 
 
 
+<meta name="description" content="HTTP Cookie,通常直接叫做cookie，最初是在客服端用于存储会话信息的。该标准要求服务器对任意HTTP请求发送Set-Cookie HTTP头作为响应的一部分，其中包含会话信息。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie笔记">
 <meta property="og:url" content="http://yoursite.com/2016/08/09/cookie笔记/index.html">
 <meta property="og:site_name" content="放荡不羁爱自由">
-<meta property="og:updated_time" content="2016-08-09T15:15:08.841Z">
+<meta property="og:description" content="HTTP Cookie,通常直接叫做cookie，最初是在客服端用于存储会话信息的。该标准要求服务器对任意HTTP请求发送Set-Cookie HTTP头作为响应的一部分，其中包含会话信息。">
+<meta property="og:updated_time" content="2016-08-10T14:36:41.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie笔记">
+<meta name="twitter:description" content="HTTP Cookie,通常直接叫做cookie，最初是在客服端用于存储会话信息的。该标准要求服务器对任意HTTP请求发送Set-Cookie HTTP头作为响应的一部分，其中包含会话信息。">
 
 
 
@@ -312,7 +315,73 @@
       
 
       
-        
+        <p>HTTP Cookie,通常直接叫做cookie，最初是在客服端用于存储会话信息的。该标准要求服务器对任意HTTP请求发送Set-Cookie HTTP头作为响应的一部分，其中包含会话信息。</p>
+<a id="more"></a>
+<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>cookie在性质上是绑定在特定的域名下的。当设定了一个cookie后，再给创建它的域名发送请求时，都会包含这个cookie。</p>
+<p>每个域的cookie总数有限，不过浏览器之间不同。</p>
+<ul>
+<li>IE6以及更低版本限制每个域最多20个。</li>
+<li>IE7和之后版本每个域名最多50个。</li>
+<li>Firefox限制每个域最多50个。</li>
+<li>Opera限制每个域最多30个。</li>
+<li>Safari和Chrome对于每个域的cookie数量限制没有硬性规定。</li>
+</ul>
+<h2 id="cookie的构成"><a href="#cookie的构成" class="headerlink" title="cookie的构成"></a>cookie的构成</h2><p>cookie由浏览器保存的以下几块信息构成。</p>
+<ul>
+<li>名称：一个唯一确定cookie的名称。</li>
+<li>值： 储存在cookie中的字符串值。值必须被URL编码。</li>
+<li>域：cookie对于哪个域是有效的。</li>
+<li>路径：对于指定域中的那个路径，应该向服务器发送cookie。</li>
+<li>失效时间：表示cookie何时被删除的时间戳。默认情况下，会话结束即将所有cookie删除；不过也可以自己设置删除时间。</li>
+<li>安全标志：制定后，cookie只有在使用SSL连接时才发送到服务器。</li>
+</ul>
+<h2 id="JavaScript中的cookie"><a href="#JavaScript中的cookie" class="headerlink" title="JavaScript中的cookie"></a>JavaScript中的cookie</h2><pre><code>var CookieUtil = {
+    get: function (name){
+        var cookieName = encodeURIComponent(name) + &quot;=&quot;,
+            cookieStart = document.cookie.indexOf(cookieName),
+            cookieValue = null;
+
+        if (cookieStart &gt; -1){
+            var cookieEnd = document.cookie.indexOf(&quot;;&quot;,cookieStart);
+            if (cookieEnd == -1){
+                cookieEnd = document.cookie.length;
+            }
+            cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length,cookieEnd));
+        }
+
+        return cookieValue;
+    },
+
+    set: function (name,value,expires,path,domain,secure){
+        var cookieText = encodeURIComponent(name) + &quot;=&quot; + encodeURIComponent(value);
+
+        if (expires instanceof Date){
+            cookieText += &quot;; expires=&quot; + expires.toGMTString();
+        }
+
+        if (path){
+            cookieText += &quot;; path=&quot; + path;
+        }
+
+        if (domain){
+            cookieText += &quot;; domain=&quot; + domain;
+        }
+
+        if (secure){
+            cookieText += &quot;; secure=&quot; + secure;
+        } 
+
+        document.cookie = cookieText;
+    },
+
+    unset: function (name, path, domain, secure){
+        this.set(name, &quot;&quot;, new Date(0), path, domain, secure);
+    }
+
+};
+</code></pre><h2 id="子cookie"><a href="#子cookie" class="headerlink" title="子cookie"></a>子cookie</h2><p>为了绕开浏览器的单域名下的cookie数限制，一些开发人员使用了一种称为子cookie（subcookie）的概念。</p>
+<h2 id="关于cookie的思考"><a href="#关于cookie的思考" class="headerlink" title="关于cookie的思考"></a>关于cookie的思考</h2><p>HTTP专有cookie可以从浏览器或者服务器设置，但是只能从服务器端读取，因为JavaScript无法获取HTTP专有cookie的值。</p>
+
       
     </div>
 
@@ -345,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/07/http简介和状态码/" rel="next" title="http协议和状态码摘要">
-                <i class="fa fa-chevron-left"></i> http协议和状态码摘要
+              <a href="/2016/08/07/http简介和状态码/" rel="next" title="http协议和状态码">
+                <i class="fa fa-chevron-left"></i> http协议和状态码
               </a>
             
           </div>
@@ -476,7 +545,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">1.</span> <span class="nav-text">限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie的构成"><span class="nav-number">2.</span> <span class="nav-text">cookie的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript中的cookie"><span class="nav-number">3.</span> <span class="nav-text">JavaScript中的cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子cookie"><span class="nav-number">4.</span> <span class="nav-text">子cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于cookie的思考"><span class="nav-number">5.</span> <span class="nav-text">关于cookie的思考</span></a></li></ol></div>
             
           </div>
         </section>
