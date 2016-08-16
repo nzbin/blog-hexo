@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JavaScript,ajax,跨域," />
 
 
 
@@ -84,12 +84,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="放荡不羁爱自由">
-<meta property="og:url" content="http://yoursite.com/categories/JavaScript/index.html">
+<meta name="description" content="通过XHR实现Ajax通信的主要限制，来源于跨域安全策略。
+CORS（Cross-Origin Resouse Sharing,跨域安全共享）是W3C的一个工作草案，定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="http://yoursite.com/2016/08/16/跨域/index.html">
 <meta property="og:site_name" content="放荡不羁爱自由">
+<meta property="og:description" content="通过XHR实现Ajax通信的主要限制，来源于跨域安全策略。
+CORS（Cross-Origin Resouse Sharing,跨域安全共享）是W3C的一个工作草案，定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。">
+<meta property="og:updated_time" content="2016-08-16T15:42:37.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="放荡不羁爱自由">
+<meta name="twitter:title" content="跨域">
+<meta name="twitter:description" content="通过XHR实现Ajax通信的主要限制，来源于跨域安全策略。
+CORS（Cross-Origin Resouse Sharing,跨域安全共享）是W3C的一个工作草案，定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。">
 
 
 
@@ -110,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/JavaScript/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/16/跨域/"/>
 
-  <title> 分类: JavaScript | 放荡不羁爱自由 </title>
+  <title> 跨域 | 放荡不羁爱自由 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,7 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -231,75 +238,162 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        JavaScript
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/16/跨域/" itemprop="url">
-              
-                <span itemprop="name">跨域</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-16T22:59:27+08:00"
-              content="2016-08-16" >
-          08-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/10/ajax学习笔记/" itemprop="url">
-              
-                <span itemprop="name">Ajax学习笔记</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-10T22:50:49+08:00"
-              content="2016-08-10" >
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                跨域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-16T22:59:27+08:00" content="2016-08-16">
+              2016-08-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过XHR实现Ajax通信的主要限制，来源于跨域安全策略。</p>
+<p>CORS（Cross-Origin Resouse Sharing,跨域安全共享）是W3C的一个工作草案，定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。</p>
+<a id="more"></a>
+<h2 id="IE对CORS的实现"><a href="#IE对CORS的实现" class="headerlink" title="IE对CORS的实现"></a>IE对CORS的实现</h2><p>XDR与XHR的不同</p>
+<ul>
+<li>cookie不会随请求发送，也不会随响应返回</li>
+<li>只能设置请求头部信息中的Content-Type字段</li>
+<li>不能访问响应头部信息</li>
+<li>只支持GET和POST请求</li>
+</ul>
+<h2 id="其他浏览器对CORS的实现"><a href="#其他浏览器对CORS的实现" class="headerlink" title="其他浏览器对CORS的实现"></a>其他浏览器对CORS的实现</h2><p>Firefox 3.5+、Safari 4+、Chrome、IOS版Safari、Android平台WebKit</p>
+<p>要请求位于另一个域中的资源，使用标准的XHR对象并在 open() 方法中传入绝对URL即可。</p>
+<p>跨域XHR对象限制：</p>
+<ul>
+<li>不能使用 setRequestHeader() 设置自定义头部</li>
+<li>不能发送和接受cookie</li>
+<li>调用 getAllResponseHeader() 方法总会返回空字符串</li>
+</ul>
+<h2 id="Preflighted-Requests"><a href="#Preflighted-Requests" class="headerlink" title="Preflighted Requests"></a>Preflighted Requests</h2><h2 id="带凭据的请求"><a href="#带凭据的请求" class="headerlink" title="带凭据的请求"></a>带凭据的请求</h2><h2 id="跨浏览器的CORS"><a href="#跨浏览器的CORS" class="headerlink" title="跨浏览器的CORS"></a>跨浏览器的CORS</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/ajax/" rel="tag">#ajax</a>
+          
+            <a href="/tags/跨域/" rel="tag">#跨域</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/10/ajax学习笔记/" rel="next" title="Ajax学习笔记">
+                <i class="fa fa-chevron-left"></i> Ajax学习笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -307,6 +401,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -326,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -388,6 +495,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IE对CORS的实现"><span class="nav-number">1.</span> <span class="nav-text">IE对CORS的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他浏览器对CORS的实现"><span class="nav-number">2.</span> <span class="nav-text">其他浏览器对CORS的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preflighted-Requests"><span class="nav-number">3.</span> <span class="nav-text">Preflighted Requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带凭据的请求"><span class="nav-number">4.</span> <span class="nav-text">带凭据的请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨浏览器的CORS"><span class="nav-number">5.</span> <span class="nav-text">跨浏览器的CORS</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -484,6 +602,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
