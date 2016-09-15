@@ -84,13 +84,16 @@
 
 
 
+<meta name="description" content="和其他大多数语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中成为“闭包”。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包">
 <meta property="og:url" content="http://yoursite.com/2016/09/04/闭包/index.html">
 <meta property="og:site_name" content="放荡不羁爱自由">
-<meta property="og:updated_time" content="2016-09-04T14:50:36.694Z">
+<meta property="og:description" content="和其他大多数语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中成为“闭包”。">
+<meta property="og:updated_time" content="2016-09-15T03:34:47.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="和其他大多数语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中成为“闭包”。">
 
 
 
@@ -293,7 +296,14 @@
       
 
       
-        
+        <p>和其他大多数语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中成为“闭包”。</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> scope = <span class="string">"local scoope"</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> scope;&#125;</div><div class="line">	<span class="keyword">return</span> f();</div><div class="line">&#125;</div><div class="line">checkscope();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> scope = <span class="string">"local scoope"</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> scope;&#125;</div><div class="line">	<span class="keyword">return</span> f;</div><div class="line">&#125;</div><div class="line">checkscope()();</div></pre></td></tr></table></figure>
+<p>##<br>为什么需要闭包</p>
+<p>##<br>闭包的优缺点</p>
+<p>##<br>怎样释放被闭包的内存变量</p>
+
       
     </div>
 
