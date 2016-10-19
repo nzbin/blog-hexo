@@ -298,12 +298,12 @@
 
       
         
-          <p>和其他大多数语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中成为“闭包”。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/04/闭包/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>和其他大多数语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中成为“闭包”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> scope = <span class="string">"local scoope"</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> scope;&#125;</div><div class="line">	<span class="keyword">return</span> f();</div><div class="line">&#125;</div><div class="line">checkscope();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> scope = <span class="string">"local scoope"</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> scope;&#125;</div><div class="line">	<span class="keyword">return</span> f;</div><div class="line">&#125;</div><div class="line">checkscope()();</div></pre></td></tr></table></figure>
+<h2 id="为什么需要闭包"><a href="#为什么需要闭包" class="headerlink" title="为什么需要闭包"></a>为什么需要闭包</h2><h2 id="闭包的优缺点"><a href="#闭包的优缺点" class="headerlink" title="闭包的优缺点"></a>闭包的优缺点</h2><h2 id="怎样释放被闭包的内存变量"><a href="#怎样释放被闭包的内存变量" class="headerlink" title="怎样释放被闭包的内存变量"></a>怎样释放被闭包的内存变量</h2>
+          
         
       
     </div>
@@ -528,13 +528,26 @@
 
       
         
-          <p>通过XHR实现Ajax通信的主要限制，来源于跨域安全策略。</p>
+          
+            <p>通过XHR实现Ajax通信的主要限制，来源于跨域安全策略。</p>
 <p>CORS（Cross-Origin Resouse Sharing,跨域安全共享）是W3C的一个工作草案，定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/16/跨域/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<h2 id="IE对CORS的实现"><a href="#IE对CORS的实现" class="headerlink" title="IE对CORS的实现"></a>IE对CORS的实现</h2><p>XDR与XHR的不同</p>
+<ul>
+<li>cookie不会随请求发送，也不会随响应返回</li>
+<li>只能设置请求头部信息中的Content-Type字段</li>
+<li>不能访问响应头部信息</li>
+<li>只支持GET和POST请求</li>
+</ul>
+<h2 id="其他浏览器对CORS的实现"><a href="#其他浏览器对CORS的实现" class="headerlink" title="其他浏览器对CORS的实现"></a>其他浏览器对CORS的实现</h2><p>Firefox 3.5+、Safari 4+、Chrome、IOS版Safari、Android平台WebKit</p>
+<p>要请求位于另一个域中的资源，使用标准的XHR对象并在 open() 方法中传入绝对URL即可。</p>
+<p>跨域XHR对象限制：</p>
+<ul>
+<li>不能使用 setRequestHeader() 设置自定义头部</li>
+<li>不能发送和接受cookie</li>
+<li>调用 getAllResponseHeader() 方法总会返回空字符串</li>
+</ul>
+<h2 id="Preflighted-Requests"><a href="#Preflighted-Requests" class="headerlink" title="Preflighted Requests"></a>Preflighted Requests</h2><h2 id="带凭据的请求"><a href="#带凭据的请求" class="headerlink" title="带凭据的请求"></a>带凭据的请求</h2><h2 id="跨浏览器的CORS"><a href="#跨浏览器的CORS" class="headerlink" title="跨浏览器的CORS"></a>跨浏览器的CORS</h2>
+          
         
       
     </div>
@@ -644,12 +657,34 @@
 
       
         
-          <p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。<br>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。<br>AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/10/ajax学习笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。<br>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。<br>AJAX 是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下。</p>
+<h2 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h2><p>createXHR()兼容函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createXHR</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> ( typeOf XMLHttpRequest != <span class="string">"undefined"</span>)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest()</div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> ( typeOf ActiveXObject != <span class="string">"undefined"</span>)&#123;</div><div class="line">		<span class="keyword">if</span> ( typeOf <span class="built_in">arguments</span>.callee.activeXString != <span class="string">"string"</span>)&#123;</div><div class="line">			<span class="keyword">var</span> versions = [ <span class="string">"MSXML2.XMLHttp.6.0"</span>, <span class="string">"MSXML2.XMLHttp.3.0"</span>, <span class="string">"MSXML2.XMLHttp"</span>],</div><div class="line">					i,len;</div><div class="line">			<span class="keyword">for</span> (i=<span class="number">0</span>,len=versions.length; i&lt;len; i++)&#123;</div><div class="line">				<span class="keyword">try</span>&#123;</div><div class="line">					<span class="keyword">new</span> ActiveXObject (versions[i]);</div><div class="line">					<span class="built_in">arguments</span>.callee.activeXString = versions[i];</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125; <span class="keyword">catch</span> (ex)&#123;</div><div class="line">					</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="built_in">arguments</span>.callee.activeXString);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No XHR object available."</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="XHR的用法"><a href="#XHR的用法" class="headerlink" title="XHR的用法"></a>XHR的用法</h3><p>open()方法,3个参数：</p>
+<ul>
+<li>要发送请求的类型（”get”、”post”等）</li>
+<li>请求的URL</li>
+<li>表示是否异步发送请求的布尔值</li>
+</ul>
+<p>send()方法，接受一个参数（作为请求主体发送的数据或者null）</p>
+<h3 id="HTTP头部信息"><a href="#HTTP头部信息" class="headerlink" title="HTTP头部信息"></a>HTTP头部信息</h3><p>每个HTTP请求和响应都会带有相应的头部信息。XHR对象也提供了操作这两种信息的方法。<br>默认情况下，在发送XHR请求的同时，还会发送下列头部信息。</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Charset</li>
+<li>Accept-Encoding</li>
+<li>Accept-Language</li>
+<li>Connection</li>
+<li>Cookie</li>
+<li>Host</li>
+<li>Referer</li>
+</ul>
+<p>要成功发送请求头部信息，必须在调用 open()方法之后且调用 send()方法之前调用setRequestHeader()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = createXHR();</div><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> )&#123;</div><div class="line">		<span class="keyword">if</span> ((xhr.status  &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>) &#123;</div><div class="line">			alert(xhr.responseText);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			alert(<span class="string">"Request was unsuccessful :"</span> + xhr.status);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">xhr.open(<span class="string">"get"</span>,<span class="string">"example.php"</span>,<span class="literal">true</span>);</div><div class="line">xhr.setRequestHeader(<span class="string">"MyHeader"</span>,<span class="string">"MyValue"</span>);</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<h3 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h3><p>GET是最常见的请求类型，最常用于向服务器查询某些信息。必要时，可以将查询字符串参数追加到URL的末尾，以便将信息发送到服务器。</p>
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>使用频率仅次于 GET 的是 POST请求，通常用于向服务器发送应该被保存的数据。POST请求应该把数据作为请求的主体提交，而 GET 请求传统上不是这样。POST 请求的主体可以包含非常多的数据，而且格式不限。</p>
+<h2 id="XMLHttpRequest-2级"><a href="#XMLHttpRequest-2级" class="headerlink" title="XMLHttpRequest 2级"></a>XMLHttpRequest 2级</h2>
+          
         
       
     </div>
@@ -759,12 +794,32 @@
 
       
         
-          <p>HTTP Cookie,通常直接叫做cookie，最初是在客服端用于存储会话信息的。该标准要求服务器对任意HTTP请求发送Set-Cookie HTTP头作为响应的一部分，其中包含会话信息。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/09/cookie学习笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>HTTP Cookie,通常直接叫做cookie，最初是在客服端用于存储会话信息的。该标准要求服务器对任意HTTP请求发送Set-Cookie HTTP头作为响应的一部分，其中包含会话信息。</p>
+<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>cookie在性质上是绑定在特定的域名下的。当设定了一个cookie后，再给创建它的域名发送请求时，都会包含这个cookie。</p>
+<p>每个域的cookie总数有限，不过浏览器之间不同。</p>
+<ul>
+<li>IE6以及更低版本限制每个域最多20个。</li>
+<li>IE7和之后版本每个域名最多50个。</li>
+<li>Firefox限制每个域最多50个。</li>
+<li>Opera限制每个域最多30个。</li>
+<li>Safari和Chrome对于每个域的cookie数量限制没有硬性规定。</li>
+</ul>
+<h2 id="cookie的构成"><a href="#cookie的构成" class="headerlink" title="cookie的构成"></a>cookie的构成</h2><p>cookie由浏览器保存的以下几块信息构成。</p>
+<ul>
+<li>名称：一个唯一确定cookie的名称。</li>
+<li>值： 储存在cookie中的字符串值。值必须被URL编码。</li>
+<li>域：cookie对于哪个域是有效的。</li>
+<li>路径：对于指定域中的那个路径，应该向服务器发送cookie。</li>
+<li>失效时间：表示cookie何时被删除的时间戳。默认情况下，会话结束即将所有cookie删除；不过也可以自己设置删除时间。</li>
+<li>安全标志：制定后，cookie只有在使用SSL连接时才发送到服务器。</li>
+</ul>
+<h2 id="JavaScript中的cookie"><a href="#JavaScript中的cookie" class="headerlink" title="JavaScript中的cookie"></a>JavaScript中的cookie</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">var CookieUtil = &#123;</div><div class="line">	get: <span class="keyword">function</span> (name)&#123;</div><div class="line">		var cookieName = encodeURIComponent(name) + <span class="string">"="</span>,</div><div class="line">			cookieStart = document.cookie.indexOf(cookieName),</div><div class="line">			cookieValue = null;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (cookieStart &gt; -1)&#123;</div><div class="line">			var cookieEnd = document.cookie.indexOf(<span class="string">";"</span>,cookieStart);</div><div class="line">			<span class="keyword">if</span> (cookieEnd == -1)&#123;</div><div class="line">				cookieEnd = document.cookie.length;</div><div class="line">			&#125;</div><div class="line">			cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length,cookieEnd));</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="built_in">return</span> cookieValue;</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	<span class="built_in">set</span>: <span class="keyword">function</span> (name,value,expires,path,domain,secure)&#123;</div><div class="line">		var cookieText = encodeURIComponent(name) + <span class="string">"="</span> + encodeURIComponent(value);</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (expires instanceof Date)&#123;</div><div class="line">			cookieText += <span class="string">"; expires="</span> + expires.toGMTString();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (path)&#123;</div><div class="line">			cookieText += <span class="string">"; path="</span> + path;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (domain)&#123;</div><div class="line">			cookieText += <span class="string">"; domain="</span> + domain;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (secure)&#123;</div><div class="line">			cookieText += <span class="string">"; secure="</span> + secure;</div><div class="line">		&#125; </div><div class="line"></div><div class="line">		document.cookie = cookieText;</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	<span class="built_in">unset</span>: <span class="keyword">function</span> (name, path, domain, secure)&#123;</div><div class="line">		this.set(name, <span class="string">""</span>, new Date(0), path, domain, secure);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="子cookie"><a href="#子cookie" class="headerlink" title="子cookie"></a>子cookie</h2><p>为了绕开浏览器的单域名下的cookie数限制，一些开发人员使用了一种称为子cookie（subcookie）的概念。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> SubCookieUtil = &#123;</div><div class="line">	</div><div class="line">	get: <span class="function"><span class="keyword">function</span> (<span class="params">name,subName</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> subCookies = <span class="keyword">this</span>.getAll(name);</div><div class="line">		<span class="keyword">if</span> (subCooKies)&#123;</div><div class="line">			<span class="keyword">return</span> subCookies[subName];</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">		&#125;	</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	getAll: <span class="function"><span class="keyword">function</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> cookieName = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">"="</span>,</div><div class="line">		    cookieStart = <span class="built_in">document</span>.cookie.indexOf(cookieName),</div><div class="line">			cookieValue = <span class="literal">null</span>,</div><div class="line">			cookieEnd,</div><div class="line">			subCookies,</div><div class="line">			i,</div><div class="line">			parts,</div><div class="line">			result = &#123;&#125;;</div><div class="line">		<span class="keyword">if</span>(cookieStart &gt; <span class="number">-1</span>)&#123;</div><div class="line">			cookieEnd = <span class="built_in">document</span>.cookie.indexOf(<span class="string">";"</span>,cookkieStart);</div><div class="line">			<span class="keyword">if</span>(cookieEnd == <span class="number">-1</span>)&#123;</div><div class="line">				cookieEnd = <span class="built_in">document</span>.cookie.length;</div><div class="line">			&#125;</div><div class="line">			cookieValue = <span class="built_in">document</span>.cookie.substring(cookieStart + cookieName.length,cookieEnd);</div><div class="line">			<span class="keyword">if</span>(cookieValue.length &gt; <span class="number">0</span>)&#123;</div><div class="line">				subCookies = cookieValue.split(<span class="string">"&amp;"</span>);</div><div class="line"></div><div class="line">				<span class="keyword">for</span>(i=<span class="number">0</span>;len=subCookies.length;i&lt;len;i++)&#123;</div><div class="line">					parts = subCookies[i].split(<span class="string">"="</span>);</div><div class="line">					result[<span class="built_in">decodeURIComponent</span>(parts[<span class="number">0</span>])] = <span class="built_in">decodeURIComponent</span>(parts[i]);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				<span class="keyword">return</span> result;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	<span class="comment">//省略更多代码</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="关于cookie的思考"><a href="#关于cookie的思考" class="headerlink" title="关于cookie的思考"></a>关于cookie的思考</h2><p>HTTP专有cookie可以从浏览器或者服务器设置，但是只能从服务器端读取，因为JavaScript无法获取HTTP专有cookie的值。</p>
+
+          
         
       
     </div>
